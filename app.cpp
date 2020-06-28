@@ -36,57 +36,57 @@ void q1_1_sim(int loops)
 		std::cout << "Iteration: " << i + 1 << ", i = " << i << std::endl;
 
 		// 1. access b[4 * i]
-		arr_idx = (base_b + (4 * i) / 4) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('b' + (4 * i) / 4))
+		arr_idx = (base_b + (4 * i + 2) / 4) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('b' + (4 * i + 2) / 4))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('b' + (4 * i) / 4);
+			cache[arr_idx] = ('b' + (4 * i + 2) / 4);
 			MISS;
 			misses++;
 		}
 
 		// 2. access a[6 * i]
-		arr_idx = (base_a + (6 * i) / 4) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('a' + (6 * i) / 4))
+		arr_idx = (base_a + (6 * i + 2) / 4) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('a' + (6 * i + 2) / 4))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('a' + (6 * i) / 4);
+			cache[arr_idx] = ('a' + (6 * i + 2) / 4);
 			MISS;
 			misses++;
 		}
 
 		// 3. access b[i]
-		arr_idx = (base_b + (i) / 4) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('b' + (i) / 4))
+		arr_idx = (base_b + (i + 2) / 4) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('b' + (i + 2) / 4))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('b' + (i) / 4);
+			cache[arr_idx] = ('b' + (i + 2) / 4);
 			MISS;
 			misses++;
 		}
 
 		// 4. access a[2000 - i]
-		arr_idx = (base_a + (2000 - i) / 4) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('a' + (2000 - i) / 4))
+		arr_idx = (base_a + (2000 - i + 2) / 4) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('a' + (2000 - i + 2) / 4))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('a' + (2000 - i) / 4);
+			cache[arr_idx] = ('a' + (2000 - i + 2) / 4);
 			MISS;
 			misses++;
 		}
@@ -118,10 +118,10 @@ void q1_2_sim(int loops)
 
 		// 1. access b[4 * i]
 		list_cnt = 0;
-		arr_idx = (base_b + (4 * i) / 4) % index;
+		arr_idx = (base_b + (4 * i + 2) / 4) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('b' + (4 * i) / 4))
+			if (elm == ('b' + (4 * i + 2) / 4))
 			{
 				HITS;
 				hits++;
@@ -138,17 +138,17 @@ void q1_2_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			} // LRU
-			cache[arr_idx].push_back(('b' + (4 * i) / 4));
+			cache[arr_idx].push_back(('b' + (4 * i + 2) / 4));
 			MISS;
 			misses++;
 		}
 
 		// 2. access a[6 * i]
 		list_cnt = 0;
-		arr_idx = (base_a + (6 * i) / 4) % index;
+		arr_idx = (base_a + (6 * i + 2) / 4) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('a' + (6 * i) / 4))
+			if (elm == ('a' + (6 * i + 2) / 4))
 			{
 				HITS;
 				hits++;
@@ -165,17 +165,17 @@ void q1_2_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			}
-			cache[arr_idx].push_back(('a' + (6 * i) / 4));
+			cache[arr_idx].push_back(('a' + (6 * i + 2) / 4));
 			MISS;
 			misses++;
 		}
 
 		// 3. access b[i]
 		list_cnt = 0;
-		arr_idx = (base_b + (i) / 4) % index;
+		arr_idx = (base_b + (i + 2) / 4) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('b' + (i) / 4))
+			if (elm == ('b' + (i + 2) / 4))
 			{
 				HITS;
 				hits++;
@@ -192,17 +192,17 @@ void q1_2_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			}
-			cache[arr_idx].push_back(('b' + (i) / 4));
+			cache[arr_idx].push_back(('b' + (i + 2) / 4));
 			MISS;
 			misses++;
 		}
 
 		// 4. access a[2000 - i]
 		list_cnt = 0;
-		arr_idx = (base_a + (2000 - i) / 4) % index;
+		arr_idx = (base_a + (2000 - i + 2) / 4) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('a' + (2000 - i) / 4))
+			if (elm == ('a' + (2000 - i + 2) / 4))
 			{
 				HITS;
 				hits++;
@@ -219,7 +219,7 @@ void q1_2_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			}
-			cache[arr_idx].push_back(('a' + (2000 - i) / 4));
+			cache[arr_idx].push_back(('a' + (2000 - i + 2) / 4));
 			MISS;
 			misses++;
 		}
@@ -250,57 +250,57 @@ void q1_3_sim(int loops)
 		std::cout << "Iteration: " << i + 1 << ", i = " << i << std::endl;
 
 		// 1. access b[4 * i]
-		arr_idx = (base_b + (4 * i) / 16) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('b' + (4 * i) / 16))
+		arr_idx = (base_b + (4 * i + 8) / 16) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('b' + (4 * i + 8) / 16))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('b' + (4 * i) / 16);
+			cache[arr_idx] = ('b' + (4 * i + 8) / 16);
 			MISS;
 			misses++;
 		}
 
 		// 2. access a[6 * i]
-		arr_idx = (base_a + (6 * i) / 16) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('a' + (6 * i) / 16))
+		arr_idx = (base_a + (6 * i + 8) / 16) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('a' + (6 * i + 8) / 16))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('a' + (6 * i) / 16);
+			cache[arr_idx] = ('a' + (6 * i + 8) / 16);
 			MISS;
 			misses++;
 		}
 
 		// 3. access b[i]
-		arr_idx = (base_b + (i) / 16) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('b' + (i) / 16))
+		arr_idx = (base_b + (i + 8) / 16) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('b' + (i + 8) / 16))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('b' + (i) / 16);
+			cache[arr_idx] = ('b' + (i + 8) / 16);
 			MISS;
 			misses++;
 		}
 
 		// 4. access a[2000 - i]
-		arr_idx = (base_a + (2000 - i) / 16) % CACHE_INDEX_SIZE;
-		if (cache[arr_idx] == ('a' + (2000 - i) / 16))
+		arr_idx = (base_a + (2000 - i + 8) / 16) % CACHE_INDEX_SIZE;
+		if (cache[arr_idx] == ('a' + (2000 - i + 8) / 16))
 		{
 			hits++;
 			HITS;
 		}
 		else
 		{
-			cache[arr_idx] = ('a' + (2000 - i) / 16);
+			cache[arr_idx] = ('a' + (2000 - i + 8) / 16);
 			MISS;
 			misses++;
 		}
@@ -332,10 +332,10 @@ void q1_4_sim(int loops)
 
 		// 1. access b[4 * i]
 		list_cnt = 0;
-		arr_idx = (base_b + (4 * i) / 16) % index;
+		arr_idx = (base_b + (4 * i + 8) / 16) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('b' + (4 * i) / 16))
+			if (elm == ('b' + (4 * i + 8) / 16))
 			{
 				HITS;
 				hits++;
@@ -352,17 +352,17 @@ void q1_4_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			} // LRU
-			cache[arr_idx].push_back(('b' + (4 * i) / 16));
+			cache[arr_idx].push_back(('b' + (4 * i + 8) / 16));
 			MISS;
 			misses++;
 		}
 
 		// 2. access a[6 * i]
 		list_cnt = 0;
-		arr_idx = (base_a + (6 * i) / 16) % index;
+		arr_idx = (base_a + (6 * i + 8) / 16) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('a' + (6 * i) / 16))
+			if (elm == ('a' + (6 * i + 8) / 16))
 			{
 				HITS;
 				hits++;
@@ -379,17 +379,17 @@ void q1_4_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			}
-			cache[arr_idx].push_back(('a' + (6 * i) / 16));
+			cache[arr_idx].push_back(('a' + (6 * i + 8) / 16));
 			MISS;
 			misses++;
 		}
 
 		// 3. access b[i]
 		list_cnt = 0;
-		arr_idx = (base_b + (i) / 4) % index;
+		arr_idx = (base_b + (i + 8) / 4) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('b' + (i) / 16))
+			if (elm == ('b' + (i + 8) / 16))
 			{
 				HITS;
 				hits++;
@@ -406,17 +406,17 @@ void q1_4_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			}
-			cache[arr_idx].push_back(('b' + (i) / 16));
+			cache[arr_idx].push_back(('b' + (i + 8) / 16));
 			MISS;
 			misses++;
 		}
 
 		// 4. access a[2000 - i]
 		list_cnt = 0;
-		arr_idx = (base_a + (2000 - i) / 16) % index;
+		arr_idx = (base_a + (2000 - i + 8) / 16) % index;
 		for (auto elm : cache[arr_idx])
 		{ // find
-			if (elm == ('a' + (2000 - i) / 16))
+			if (elm == ('a' + (2000 - i + 8) / 16))
 			{
 				HITS;
 				hits++;
@@ -433,7 +433,7 @@ void q1_4_sim(int loops)
 			{
 				cache[arr_idx].pop_front();
 			}
-			cache[arr_idx].push_back(('a' + (2000 - i) / 16));
+			cache[arr_idx].push_back(('a' + (2000 - i + 8) / 16));
 			MISS;
 			misses++;
 		}
